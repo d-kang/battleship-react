@@ -1,6 +1,6 @@
 const path = require('path');
-const nodeExternals = require('webpack-node-externals');
 const webpack = require('webpack');
+
 module.exports = {
   devtool: 'inline-source-map',
   entry: './src/index.jsx',
