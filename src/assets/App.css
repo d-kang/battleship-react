@@ -1,20 +1,21 @@
 .flex-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .grid-container.player {
   display: grid;
-  grid-template-columns: repeat(10, 50px);
-  grid-auto-rows: minmax(50px, 50px);
-  padding: 10px;
+  grid-template-columns: repeat(10, 25px);
+  grid-auto-rows: minmax(25px, 25px);
+  padding-right: 750px;
 }
 
 .grid-container.opponent {
   display: grid;
-  grid-template-columns: repeat(10, 25px);
-  grid-auto-rows: minmax(25px, 25px);
-  padding: 10px;
+  grid-template-columns: repeat(10, 50px);
+  grid-auto-rows: minmax(50px, 50px);
 }
 
 .grid-item {

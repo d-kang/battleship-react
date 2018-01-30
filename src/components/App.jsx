@@ -33,7 +33,7 @@ class App extends PureComponent {
     return (
       <div className='App'>
         <div className="flex-container">
-          <div className="grid-container opponent">
+          <div className="grid-container player">
             {
               this.state.board_1.map((row, i) => {
                 return (
@@ -46,9 +46,9 @@ class App extends PureComponent {
               })
             }
           </div>
-          <div className="grid-container player">
+          <div className="grid-container opponent">
             {
-              this.state.board_1.map((row, i) => {
+              this.state.board_2.map((row, i) => {
                 return (
                   row.map((cell, k) => {
                     return (
