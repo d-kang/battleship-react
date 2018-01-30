@@ -1,18 +1,20 @@
 import React, { PureComponent } from 'react';
 
+import '../assets/App';
 
 const createBoard = () => {
   return [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    [null, '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+    ['A', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    ['B', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    ['C', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    ['D', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    ['E', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    ['F', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    ['G', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    ['H', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    ['I', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    ['J', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   ]
 }
 
@@ -32,14 +34,19 @@ class App extends PureComponent {
   render() {
     return (
       <div className='App'>
+        <h1 className='header'>Welcome To BattleShip!</h1>
         <div className="flex-container">
           <div className="grid-container player">
             {
-              this.state.board_1.map((row, i) => {
+              this.state.board_1.map((row, i, arr) => {
                 return (
                   row.map((cell, k) => {
                     return (
-                      <div className="grid-item"></div>
+                      i === 0 && arr[i][k] !== null
+                        ? <div className="grid-item num">{k}</div>
+                        : k === 0
+                        ? <div className="grid-item letter">{cell}</div>
+                        : <div className="grid-item"></div>
                     )
                   })
                 )
@@ -48,11 +55,15 @@ class App extends PureComponent {
           </div>
           <div className="grid-container opponent">
             {
-              this.state.board_2.map((row, i) => {
+              this.state.board_2.map((row, i, arr) => {
                 return (
                   row.map((cell, k) => {
                     return (
-                      <div className="grid-item"></div>
+                      i === 0 && arr[i][k] !== null
+                        ? <div className="grid-item num">{k}</div>
+                        : k === 0
+                        ? <div className="grid-item letter">{cell}</div>
+                        : <div className="grid-item"></div>
                     )
                   })
                 )
