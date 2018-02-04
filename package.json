@@ -26,6 +26,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "css-loader": "^0.28.9",
     "jest": "^22.1.4",
+    "redux-devtools": "^3.4.1",
     "style-loader": "^0.20.1",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.11.1"
@@ -33,6 +34,8 @@
   "dependencies": {
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2"
   }
 }

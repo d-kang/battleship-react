@@ -2,11 +2,16 @@ import React from 'react';
 import CellMap from './CellMap';
 import PropTypes from 'prop-types';
 
-const BoardMap = ({ board, className }) =>
+const BoardMap = ({ board, className, placePiece }) =>
   <div className={className}>
     {
       board.map((row, i) => {
-        return <CellMap key={i} i={i} row={row} />
+        return <CellMap
+          key={i}
+          i={i}
+          row={row}
+          placePiece={placePiece}
+        />
       })
     }
   </div>

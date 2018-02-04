@@ -1,32 +1,35 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import '../assets/App';
+import { connect } from 'react-redux';
+import './App.css';
 import { createBoard } from '../helpers';
 import Header from './Header';
 import Boards from './Boards';
+import { testAction } from '../actions/creators';
 
 class App extends Component {
-
   state = {
     board_1: [[]],
     board_2: [[]],
     buttonText: 'start game',
     instruction: 'press start to start the game',
-    isEven: true,
+    placedPieces: null,
   }
+
+  logProps = console.log('props>>>', this.props)
+  logState = console.log('state>>>', this.state)
 
   componentWillMount() {
     console.info('component will mount');
   }
 
   componentDidMount() {
-    console.info('component did mount');
     this.setState({
       board_1: createBoard(),
       board_2: createBoard()
     });
-
-    console.log('>>>============Mounting Complete=================>>>')
+    console.info('component did mount');
+    console.log('>>>============Mounting Complete=================>>>');
   }
   componentWillReceiveProps(nextProps) {
     this.setState({ isEven: nextProps.index % 2 === 0 });
@@ -37,8 +40,7 @@ class App extends Component {
   shouldComponentUpdate(nextProps, nextState) {
     console.info('>>> should component update <<<');
     console.log({ nextProps, nextState });
-
-    return nextState.isEven ? true : false;
+    return true;
   }
   componentWillUpdate(nextProps, nextState) {
     console.info('>>> component will update <<<');
@@ -55,12 +57,14 @@ class App extends Component {
   }
 
   handleClick = () => {
+    this.props.onClick();
     const { buttonText } = this.state;
     if (buttonText === 'start game') {
       this.setState({
         buttonText: 'initialize pieces',
         instruction: 'please place your pieces then press the button'
       });
+
     } else if (buttonText === 'initialize pieces') {
       this.setState({
         buttonText: 'restart',
@@ -74,6 +78,13 @@ class App extends Component {
     }
   }
 
+  placePiece = () => {
+    const { board_1 } = this.state;
+
+    const place = board_1.splice()[i][k] = 1;
+    this.setState({ board_1: place });
+  }
+
   render() {
     const {
       buttonText,
@@ -83,14 +94,11 @@ class App extends Component {
     return (
       <div className='App'>
         <Header />
-        <button
-          onClick={this.handleClick}
-        >
-          {buttonText}
-        </button>
+        <Button />
         <div>{instruction}</div>
         <Boards
           player={this.state.board_1}
+          placePiece={this.placePiece}
           opponent={this.state.board_2}
         />
       </div>
@@ -98,4 +106,15 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = ({ test }, ownProps) => ({
+  test: test,
+});
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  onClick: () => dispatch(testAction()),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

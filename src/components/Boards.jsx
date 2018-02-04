@@ -11,6 +11,7 @@ const Boards = ({ player, opponent }) =>
     <BoardMap
       className="grid-container opponent"
       board={opponent}
+      style={{borderTop: '1px'}}
     />
   </div>
 

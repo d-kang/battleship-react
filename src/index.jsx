@@ -1,11 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import App from './components/App';
-import './assets/index';
+import './index.css';
+import configureStore from './store/configureStore';
+
+const store = configureStore();
 
 const render = Component =>
   ReactDOM.render(
-    <Component />,
+    <Provider store={store}>
+      <Component />
+    </Provider>,
     document.getElementById('root')
   )
 
