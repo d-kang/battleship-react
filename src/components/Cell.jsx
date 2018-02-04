@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Cell = ({ cell, clSuffix, i, k }) => {
   const innerText = clSuffix === 'num'
@@ -8,7 +9,6 @@ const Cell = ({ cell, clSuffix, i, k }) => {
     : '';
   return (
     <div
-      key={`${i}_${k}`}
       className={`grid-item ${clSuffix}`}
       onClick={() => console.log(`hi ${i} ${k}`)}
     >
@@ -17,5 +17,14 @@ const Cell = ({ cell, clSuffix, i, k }) => {
   )
 };
 
+Cell.propTypes = {
+  cell: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
+  clSuffix: PropTypes.string,
+  i: PropTypes.number,
+  k: PropTypes.number,
+};
 
 export default Cell;
