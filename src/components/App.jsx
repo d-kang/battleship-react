@@ -6,28 +6,21 @@ import { createBoard } from '../helpers';
 import Header from './Header';
 import Boards from './Boards';
 import { testAction } from '../actions/creators';
+import Button from './Button';
+import {
+  startGame,
+  initialize,
+  restart } from '../actions/creators';
 
 class App extends Component {
-  state = {
-    board_1: [[]],
-    board_2: [[]],
-    buttonText: 'start game',
-    instruction: 'press start to start the game',
-    placedPieces: null,
-  }
-
-  logProps = console.log('props>>>', this.props)
-  logState = console.log('state>>>', this.state)
+  logProps = console.log('props>>>', this.props);
+  logState = console.log('state>>>', this.state);
 
   componentWillMount() {
     console.info('component will mount');
   }
 
   componentDidMount() {
-    this.setState({
-      board_1: createBoard(),
-      board_2: createBoard()
-    });
     console.info('component did mount');
     console.log('>>>============Mounting Complete=================>>>');
   }
@@ -57,61 +50,50 @@ class App extends Component {
   }
 
   handleClick = () => {
-    this.props.onClick();
-    const { buttonText } = this.state;
+    const { buttonText } = this.props;
     if (buttonText === 'start game') {
-      this.setState({
-        buttonText: 'initialize pieces',
-        instruction: 'please place your pieces then press the button'
-      });
-
+      this.props.startGame();
     } else if (buttonText === 'initialize pieces') {
-      this.setState({
-        buttonText: 'restart',
-        instruction: 'game has started, have fun'
-      });
+      this.props.initialize();
     } else if (buttonText === 'restart') {
-      this.setState({
-        buttonText: 'start game',
-        instruction: 'press start to start the game'
-      });
+      this.props.restart();
     }
-  }
-
-  placePiece = () => {
-    const { board_1 } = this.state;
-
-    const place = board_1.splice()[i][k] = 1;
-    this.setState({ board_1: place });
   }
 
   render() {
     const {
       buttonText,
       instruction,
-    } = this.state;
+    } = this.props;
 
     return (
       <div className='App'>
         <Header />
-        <Button />
+        <Button
+          onClick={this.handleClick}
+          buttonText={buttonText}
+        />
         <div>{instruction}</div>
         <Boards
-          player={this.state.board_1}
-          placePiece={this.placePiece}
-          opponent={this.state.board_2}
+          player={this.props.board_1}
+          opponent={this.props.board_2}
         />
       </div>
     )
   }
 }
 
-const mapStateToProps = ({ test }, ownProps) => ({
-  test: test,
+const mapStateToProps = (state, ownProps) => ({
+  board_1: state.board.board_1,
+  board_2: state.board.board_2,
+  buttonText: state.board.buttonText,
+  instruction: state.board.instruction,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  onClick: () => dispatch(testAction()),
+  startGame: () => dispatch({ type: 'START_GAME' }),
+  initialize: () => dispatch({ type: 'INITIALIZE_PIECES'}),
+  restart: () => dispatch({ type: 'RESTART_GAME'}),
 });
 
 export default connect(

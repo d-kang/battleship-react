@@ -1,0 +1,3 @@
+export const START_GAME = 'START_GAME';
+export const INITIALIZE_PIECES = 'INITIALIZE_PIECES';
+export const RESTART_GAME = 'RESTART_GAME';

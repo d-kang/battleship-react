@@ -1,7 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-const Cell = ({ cell, clSuffix, i, k }) => {
+const Cell = ({
+  cell,
+  clSuffix,
+  i,
+  k,
+  clickCell,
+  backgroundColor,
+}) => {
   const innerText = clSuffix === 'num'
     ? k
     : clSuffix === 'letter'
@@ -10,7 +18,7 @@ const Cell = ({ cell, clSuffix, i, k }) => {
   return (
     <div
       className={`grid-item ${clSuffix}`}
-      onClick={() => console.log(`hi ${i} ${k}`)}
+      onClick={clickCell}
     >
       {innerText}
     </div>
@@ -27,4 +35,13 @@ Cell.propTypes = {
   k: PropTypes.number,
 };
 
-export default Cell;
+const mapStateToProps = (state, ownProps) => ({
+});
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Cell);

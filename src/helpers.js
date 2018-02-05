@@ -14,4 +14,4 @@ const createBoard = () => {
   ];
 };
 
-module.exports = { createBoard };
+export { createBoard };
