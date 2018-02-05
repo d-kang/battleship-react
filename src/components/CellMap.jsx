@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Cell from './Cell';
 
-const CellMap = ({ row, i }) =>
+const CellMap = ({ row, i, isPlayer }) =>
   row.map((cell, k) => {
     let clSuffix = (i === 0 && row[k] !== null)
       ? 'num'
@@ -11,6 +11,7 @@ const CellMap = ({ row, i }) =>
       : '';
     return (
       <Cell
+        isPlayer={isPlayer}
         key={`${i}_${k}`}
         i={i}
         k={k}
@@ -21,9 +22,9 @@ const CellMap = ({ row, i }) =>
   });
 
 CellMap.propTypes = {
-  row: PropTypes.array,
-  arr: PropTypes.array,
-  i: PropTypes.number,
+  row: PropTypes.array.isRequired,
+  i: PropTypes.number.isRequired,
+  isPlayer: PropTypes.bool.isRequired,
 }
 
 export default CellMap;

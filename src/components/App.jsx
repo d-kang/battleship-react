@@ -10,8 +10,8 @@ import Button from './Button';
 import {
   startGame,
   initialize,
-  restart } from '../actions/creators';
-
+  restart, } from '../actions/creators';
+console.log({ startGame})
 class App extends Component {
   logProps = console.log('props>>>', this.props);
   logState = console.log('state>>>', this.state);
@@ -91,9 +91,9 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  startGame: () => dispatch({ type: 'START_GAME' }),
-  initialize: () => dispatch({ type: 'INITIALIZE_PIECES'}),
-  restart: () => dispatch({ type: 'RESTART_GAME'}),
+  startGame: () => dispatch(startGame()),
+  initialize: () => dispatch(initialize()),
+  restart: () => dispatch(restart()),
 });
 
 export default connect(

@@ -29,6 +29,14 @@ export default createReducer(initialState, {
     buttonText: 'start game',
     instruction: 'press start to start the game'
   }),
+  ['PLACE_PIECE']: (state, { i, k }) => {
+    const player = [...state.board_1];
+    player[i][k] = 1;
+    return {
+      ...state,
+      board_1: player,
+    }
+  }
 })
 
 
