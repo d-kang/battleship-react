@@ -26,14 +26,20 @@ class Cell extends PureComponent {
       cell } = nextProps;
     this.renderPiece;
     if (Array.isArray(cell)) {
-      if (isPlayer && cell[0] === 1) {
-        this.renderPiece = { background: 'grey' };
-      } else if (!isPlayer && cell[0] === -1 && cell[1] === true) {
-        this.renderPiece = { background: 'green' };
-        cell = 'X';
-      } else if (!isPlayer && cell[0] === 0 && cell[1] === true) {
-        this.renderPiece = { background: 'red' };
-        cell = 'O';
+      if (isPlayer) {
+        if (cell[0] === 1 && cell[1] === false) {
+          this.renderPiece = { background: 'grey' };
+        } else if (cell[0] === 1 && cell[1] === true) {
+          this.renderPiece = { background: 'green' };
+        } else if (cell[0] === 0 && cell[1] === true) {
+          this.renderPiece = { background: 'red' };
+        }
+      } else if (!isPlayer) {
+        if (cell[0] === -1 && cell[1] === true) {
+          this.renderPiece = { background: 'green' };
+        } else if (cell[0] === 0 && cell[1] === true) {
+          this.renderPiece = { background: 'red' };
+        }
       } else {
         this.renderPiece = {};
       }
