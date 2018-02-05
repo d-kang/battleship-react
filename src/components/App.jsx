@@ -41,11 +41,15 @@ class App extends Component {
         key={this.state.gameID}
       >
         <Header />
-        <Button
-          onClick={this.handleClick}
-          buttonText={buttonText}
-        />
-        <div>{instruction}</div>
+        <div
+          style={{textAlign: 'center'}}
+        >
+          <div>{instruction}</div>
+          <Button
+            onClick={this.handleClick}
+            buttonText={buttonText}
+          />
+        </div>
         <Boards
           player={this.props.player_board_1}
           opponent={this.props.opponent_board_2}

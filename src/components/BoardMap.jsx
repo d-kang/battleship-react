@@ -3,17 +3,25 @@ import CellMap from './CellMap';
 import PropTypes from 'prop-types';
 
 const BoardMap = ({ board, className, isPlayer }) =>
-  <div className={className}>
-    {
-      board.map((row, i) => {
-        return <CellMap
-          isPlayer={isPlayer}
-          key={i}
-          i={i}
-          row={row}
-        />
-      })
-    }
+  <div>
+    {isPlayer && 'Player Board'}
+    <div className={className}>
+      {
+        board.map((row, i) => {
+          return <CellMap
+            isPlayer={isPlayer}
+            key={i}
+            i={i}
+            row={row}
+          />
+        })
+      }
+    </div>
+    <div
+      style={{textAlign: 'end'}}
+    >
+      {!isPlayer && 'Opponent Board'}
+    </div>
   </div>
 
 BoardMap.propTypes = {
