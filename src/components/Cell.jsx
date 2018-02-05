@@ -2,11 +2,13 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
-  playerPlacePiece,
-  guessOpponentPiece } from '../actions/creators';
+  playerInitializeBoard,
+  playerMove } from '../actions/creators';
 
 class Cell extends PureComponent {
-
+  state = {
+    isPlayersTurn: true,
+  }
   componentWillMount() {
     const { clSuffix, k, cell } = this.props;
     this.innerText = clSuffix === 'num'
@@ -42,12 +44,12 @@ class Cell extends PureComponent {
       k,
       isPlayer,
       gameMode,
-      playerPlacePiece,
-      guessOpponentPiece } = this.props;
+      playerInitializeBoard,
+      playerMove } = this.props;
     if (isPlayer && gameMode === 'initialize') {
-      playerPlacePiece({ i, k });
+      playerInitializeBoard({ i, k });
     } else if (!isPlayer && gameMode === 'game_on') {
-      guessOpponentPiece({ i, k });
+      playerMove({ i, k });
     }
   }
 
@@ -75,7 +77,7 @@ Cell.propTypes = {
   i: PropTypes.number.isRequired,
   k: PropTypes.number.isRequired,
   isPlayer: PropTypes.bool.isRequired,
-  playerPlacePiece: PropTypes.func.isRequired,
+  playerInitializeBoard: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => ({
@@ -83,8 +85,8 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  playerPlacePiece: payload => dispatch(playerPlacePiece(payload)),
-  guessOpponentPiece: payload => dispatch(guessOpponentPiece(payload)),
+  playerInitializeBoard: payload => dispatch(playerInitializeBoard(payload)),
+  playerMove: payload => dispatch(playerMove(payload)),
 });
 
 export default connect(

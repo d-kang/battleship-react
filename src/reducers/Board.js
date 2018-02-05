@@ -4,8 +4,8 @@ import {
   START_GAME,
   INITIALIZE_PIECES,
   RESTART_GAME,
-  PLAYER_PLACE_PIECE,
-  GUESS_OPPONENT_PIECE,
+  PLAYER_INITIALIZE_BOARD,
+  PLAYER_MOVE,
 } from '../actions/constants';
 
 const initialState = {
@@ -35,7 +35,7 @@ export default createReducer(initialState, {
     buttonText: 'start game',
     instruction: 'press start to start the game'
   }),
-  [PLAYER_PLACE_PIECE]: (state, { i, k }) => {
+  [PLAYER_INITIALIZE_BOARD]: (state, { i, k }) => {
     const player = [...state.board_1];
     player[i][k] = [1, false];
     return {
@@ -44,7 +44,7 @@ export default createReducer(initialState, {
       board_1: player,
     }
   },
-  [GUESS_OPPONENT_PIECE]: (state, { i, k }) => {
+  [PLAYER_MOVE]: (state, { i, k }) => {
     const opponent = [...state.board_2];
     opponent[i][k] = [opponent[i][k][0], true];
     return {
