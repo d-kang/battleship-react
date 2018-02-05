@@ -22,19 +22,19 @@ const initialState = {
 };
 
 export default createReducer(initialState, {
-  [START_GAME]: (state, payload) => ({
+  [START_GAME]: (state) => ({
     ...state,
     game_mode: 'initialize',
     buttonText: 'initialize pieces',
     instruction: 'Please place your pieces then press the button',
   }),
-  [INITIALIZE_PIECES]: (state, payload) => ({
+  [INITIALIZE_PIECES]: (state) => ({
     ...state,
     game_mode: 'game_on',
     buttonText: 'restart',
     instruction: 'Game has started, have fun',
   }),
-  [RESTART_GAME]: (state, payload) => ({
+  [RESTART_GAME]: (state) => ({
     ...state,
     game_mode: 'start',
     buttonText: 'start game',
@@ -49,7 +49,7 @@ export default createReducer(initialState, {
       ...state,
       game_mode: state.game_mode,
       player_board_1: player,
-    }
+    };
   },
   [PLAYER_MOVE]: (state, { i, k }) => {
     const opponent = [...state.opponent_board_2];
@@ -58,17 +58,16 @@ export default createReducer(initialState, {
       ...state,
       game_mode: state.game_mode,
       opponent_board_2: opponent,
-    }
+    };
   },
   [OPPONENT_MOVE]: (state) => {
     const { i, k } = state.generateMove();
-    console.log('>>>>', {i, k});
     const player = [...state.player_board_1];
     player[i][k] = [...[player[i][k][0], true]];
     return {
       ...state,
       game_mode: state.game_mode,
       player_board_1: player,
-    }
+    };
   },
-})
+});

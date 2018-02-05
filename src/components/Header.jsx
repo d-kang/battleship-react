@@ -1,7 +1,9 @@
 import React from 'react';
 
-const Header = ({ className, message }) =>
-  <h1 className='header'>{message}</h1>
+const Header = ({ message }) =>
+  <h1 className='header'>
+    {message}
+  </h1>;
 
 Header.defaultProps = {
   className: 'header',

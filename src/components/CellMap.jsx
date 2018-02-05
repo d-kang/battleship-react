@@ -18,13 +18,13 @@ const CellMap = ({ row, i, isPlayer }) =>
         clSuffix={clSuffix}
         cell={cell}
       />
-    )
+    );
   });
 
 CellMap.propTypes = {
   row: PropTypes.array.isRequired,
   i: PropTypes.number.isRequired,
   isPlayer: PropTypes.bool.isRequired,
-}
+};
 
 export default CellMap;

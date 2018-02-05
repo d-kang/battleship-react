@@ -6,7 +6,7 @@ const Button = ({ onClick, buttonText }) =>
     onClick={onClick}
   >
     {buttonText}
-  </button>
+  </button>;
 
 Button.defaultProps = {
   buttonText: 'click'
@@ -14,6 +14,6 @@ Button.defaultProps = {
 Button.propTypes = {
   onClick: PropTypes.func.isRequired,
   buttonText: PropTypes.string.isRequired,
-}
+};
 
 export default Button;

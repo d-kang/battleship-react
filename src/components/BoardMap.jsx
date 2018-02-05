@@ -13,7 +13,7 @@ const BoardMap = ({ board, className, isPlayer }) =>
             key={i}
             i={i}
             row={row}
-          />
+          />;
         })
       }
     </div>
@@ -22,7 +22,7 @@ const BoardMap = ({ board, className, isPlayer }) =>
     >
       {!isPlayer && 'Opponent Board'}
     </div>
-  </div>
+  </div>;
 
 BoardMap.propTypes = {
   board: PropTypes.array.isRequired,

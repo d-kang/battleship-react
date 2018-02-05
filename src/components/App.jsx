@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './App.css';
-import { createBoard } from '../helpers';
 import Header from './Header';
 import Boards from './Boards';
-import { testAction } from '../actions/creators';
 import Button from './Button';
 import {
   startGame,
@@ -55,22 +53,29 @@ class App extends Component {
           opponent={this.props.opponent_board_2}
         />
       </div>
-    )
+    );
   }
 }
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state) => ({
   player_board_1: state.board.player_board_1,
   opponent_board_2: state.board.opponent_board_2,
   buttonText: state.board.buttonText,
   instruction: state.board.instruction,
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = (dispatch) => ({
   startGame: () => dispatch(startGame()),
   initialize: () => dispatch(initialize()),
   restart: () => dispatch(restart()),
 });
+
+App.propTypes = {
+  player_board_1: PropTypes.array.isRequired,
+  opponent_board_2: PropTypes.array.isRequired,
+  buttonText: PropTypes.string.isRequired,
+  instruction: PropTypes.string.isRequired,
+};
 
 export default connect(
   mapStateToProps,

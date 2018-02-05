@@ -28,9 +28,9 @@ const createOpponentBoard = () => {
     ['I', [-1, false], [0, false], [0, false], [0, false], [0, false], [0, false], [0, false], [0, false], [0, false], [0, false]],
     ['J', [-1, false], [0, false], [0, false], [0, false], [0, false], [-1, false], [-1, false], [-1, false], [-1, false], [-1, false]],
   ];
-}
+};
 
-const generateOpponentMove = board => {
+const generateOpponentMove = () => {
   let i = 1;
   let k = 0;
   return () => {
@@ -43,8 +43,8 @@ const generateOpponentMove = board => {
       }
     }
     return { i, k };
-  }
-}
+  };
+};
 
 const createCoordinates = () => ([
   [[0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6], [0, 7], [0, 8], [0, 9]],

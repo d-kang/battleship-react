@@ -20,7 +20,7 @@ class Cell extends PureComponent {
         : '';
   }
 
-  componentWillUpdate(nextProps, nextState) {
+  componentWillUpdate(nextProps) {
     let {
       isPlayer,
       cell } = nextProps;
@@ -48,8 +48,6 @@ class Cell extends PureComponent {
 
   moves = () => {
     const {
-      cell,
-      clSuffix,
       i,
       k,
       isPlayer,
@@ -74,7 +72,7 @@ class Cell extends PureComponent {
       >
         {this.innerText}
       </div>
-    )
+    );
   }
 }
 
@@ -92,13 +90,13 @@ Cell.propTypes = {
   playerInitializeBoard: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state) => ({
   gameMode: state.board.game_mode,
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  playerInitializeBoard: payload => dispatch(playerInitializeBoard(payload)),
-  playerMove: payload => dispatch(playerMove(payload)),
+const mapDispatchToProps = (dispatch) => ({
+  playerInitializeBoard: (payload) => dispatch(playerInitializeBoard(payload)),
+  playerMove: (payload) => dispatch(playerMove(payload)),
   opponentMove: () => dispatch(opponentMove()),
 });
 

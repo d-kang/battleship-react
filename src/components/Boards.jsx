@@ -15,7 +15,7 @@ const Boards = ({ player, opponent }) =>
       board={opponent}
       style={{borderTop: '1px'}}
     />
-  </div>
+  </div>;
 
 Boards.propTypes = {
   player: PropTypes.array.isRequired,
