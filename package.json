@@ -4,7 +4,7 @@
   "description": "Battleship Game with React",
   "main": "index.js",
   "scripts": {
-    "start": "node server & webpack -p",
+    "start": "node server/index.js & webpack -p",
     "dev": "webpack-dev-server",
     "test": "jest --watch"
   },
