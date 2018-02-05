@@ -38,7 +38,9 @@ export default createReducer(initialState, {
     ...state,
     game_mode: 'start',
     buttonText: 'start game',
-    instruction: 'press start to start the game'
+    instruction: 'press start to start the game',
+    player_board_1: createBoard(),
+    opponent_board_2: createOpponentBoard(),
   }),
   [PLAYER_INITIALIZE_BOARD]: (state, { i, k }) => {
     const player = [...state.player_board_1];
