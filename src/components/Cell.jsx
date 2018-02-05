@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import {
   playerInitializeBoard,
   playerMove,
-  opponentMove } from '../actions/creators';
+  opponentMove,
+  makeOpponentMoveWithTimeout } from '../actions/creators';
 
 class Cell extends PureComponent {
   state = {
@@ -54,12 +55,13 @@ class Cell extends PureComponent {
       gameMode,
       playerInitializeBoard,
       playerMove,
+      makeOpponentMoveWithTimeout,
       opponentMove } = this.props;
     if (isPlayer && gameMode === 'initialize') {
       playerInitializeBoard({ i, k });
     } else if (!isPlayer && gameMode === 'game_on') {
       playerMove({ i, k });
-      opponentMove();
+      makeOpponentMoveWithTimeout();
     }
   }
 
@@ -98,6 +100,8 @@ const mapDispatchToProps = (dispatch) => ({
   playerInitializeBoard: (payload) => dispatch(playerInitializeBoard(payload)),
   playerMove: (payload) => dispatch(playerMove(payload)),
   opponentMove: () => dispatch(opponentMove()),
+  makeOpponentMoveWithTimeout: () => dispatch(makeOpponentMoveWithTimeout()),
+
 });
 
 export default connect(

@@ -8,6 +8,9 @@ import {
   OPPONENT_MOVE,
 } from './constants';
 
+import { createTimeout } from './utils';
+
+
 const creators = {
   startGame: () => ({ type: START_GAME }),
   initialize: () => ({ type: INITIALIZE_PIECES }),
@@ -27,6 +30,12 @@ const creators = {
   opponentMove: () => ({
     type: OPPONENT_MOVE,
   }),
+  makeOpponentMoveWithTimeout: () => (
+    (dispatch) => (
+      createTimeout()
+        .then(() => dispatch(creators.opponentMove()))
+    )
+  )
 };
 
 const {
@@ -36,6 +45,7 @@ const {
   playerInitializeBoard,
   opponentInitializeBoard,
   playerMove,
+  makeOpponentMoveWithTimeout,
   opponentMove,
 } = creators;
 
@@ -46,5 +56,6 @@ export {
   playerInitializeBoard,
   opponentInitializeBoard,
   playerMove,
+  makeOpponentMoveWithTimeout,
   opponentMove,
 };

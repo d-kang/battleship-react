@@ -8,7 +8,7 @@ import Button from './Button';
 import {
   startGame,
   initialize,
-  restart, } from '../actions/creators';
+  restart } from '../actions/creators';
 
 class App extends Component {
   state = {
