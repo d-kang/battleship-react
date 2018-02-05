@@ -4,8 +4,9 @@
   "description": "Battleship Game with React",
   "main": "index.js",
   "scripts": {
-    "start": "webpack -p & node server",
+    "start": "node server/index.js",
     "dev": "webpack-dev-server",
+    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress",
     "test": "jest --watch"
   },
   "repository": {
