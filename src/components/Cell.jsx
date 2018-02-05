@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
   playerInitializeBoard,
-  playerMove } from '../actions/creators';
+  playerMove,
+  opponentMove } from '../actions/creators';
 
 class Cell extends PureComponent {
   state = {
     isPlayersTurn: true,
   }
+
   componentWillMount() {
     const { clSuffix, k, cell } = this.props;
     this.innerText = clSuffix === 'num'
@@ -45,11 +47,13 @@ class Cell extends PureComponent {
       isPlayer,
       gameMode,
       playerInitializeBoard,
-      playerMove } = this.props;
+      playerMove,
+      opponentMove } = this.props;
     if (isPlayer && gameMode === 'initialize') {
       playerInitializeBoard({ i, k });
     } else if (!isPlayer && gameMode === 'game_on') {
       playerMove({ i, k });
+      opponentMove();
     }
   }
 
@@ -87,6 +91,7 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
   playerInitializeBoard: payload => dispatch(playerInitializeBoard(payload)),
   playerMove: payload => dispatch(playerMove(payload)),
+  opponentMove: () => dispatch(opponentMove()),
 });
 
 export default connect(

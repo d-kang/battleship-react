@@ -1,19 +1,24 @@
-import { createBoard, createOpponentBoard } from '../helpers';
 import { createReducer } from '../utils';
+import {
+  createBoard,
+  createOpponentBoard,
+  generateOpponentMove } from '../helpers';
 import {
   START_GAME,
   INITIALIZE_PIECES,
   RESTART_GAME,
   PLAYER_INITIALIZE_BOARD,
   PLAYER_MOVE,
+  OPPONENT_MOVE,
 } from '../actions/constants';
 
 const initialState = {
-  board_1: createBoard(),
-  board_2: createOpponentBoard(),
+  player_board_1: createBoard(),
+  opponent_board_2: createOpponentBoard(),
   game_mode: 'start',
   buttonText: 'start game',
   instruction: 'press start to start the game',
+  generateMove: generateOpponentMove(),
 };
 
 export default createReducer(initialState, {
@@ -36,25 +41,32 @@ export default createReducer(initialState, {
     instruction: 'press start to start the game'
   }),
   [PLAYER_INITIALIZE_BOARD]: (state, { i, k }) => {
-    const player = [...state.board_1];
+    const player = [...state.player_board_1];
     player[i][k] = [1, false];
     return {
       ...state,
       game_mode: state.game_mode,
-      board_1: player,
+      player_board_1: player,
     }
   },
   [PLAYER_MOVE]: (state, { i, k }) => {
-    const opponent = [...state.board_2];
+    const opponent = [...state.opponent_board_2];
     opponent[i][k] = [opponent[i][k][0], true];
     return {
       ...state,
       game_mode: state.game_mode,
-      board_2: opponent,
+      opponent_board_2: opponent,
     }
-  }
+  },
+  [OPPONENT_MOVE]: (state) => {
+    const { i, k } = state.generateMove();
+    console.log('>>>>', {i, k});
+    const player = [...state.player_board_1];
+    player[i][k] = [...[player[i][k][0], true]];
+    return {
+      ...state,
+      game_mode: state.game_mode,
+      player_board_1: player,
+    }
+  },
 })
-
-
-
-

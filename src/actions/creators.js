@@ -5,6 +5,7 @@ import {
   PLAYER_INITIALIZE_BOARD,
   OPPONENT_INITIALIZE_BOARD,
   PLAYER_MOVE,
+  OPPONENT_MOVE,
 } from './constants';
 
 const creators = {
@@ -23,6 +24,9 @@ const creators = {
     type: PLAYER_MOVE,
     payload,
   }),
+  opponentMove: payload => ({
+    type: OPPONENT_MOVE,
+  }),
 };
 
 const {
@@ -32,6 +36,7 @@ const {
   playerInitializeBoard,
   opponentInitializeBoard,
   playerMove,
+  opponentMove,
 } = creators;
 
 export {
@@ -41,4 +46,5 @@ export {
   playerInitializeBoard,
   opponentInitializeBoard,
   playerMove,
+  opponentMove,
 }

@@ -17,42 +17,6 @@ class App extends Component {
     gameID: 0,
   }
 
-  logProps = console.log('props>>>', this.props);
-  logState = console.log('state>>>', this.state);
-
-  componentWillMount() {
-    console.info('component will mount');
-  }
-
-  componentDidMount() {
-    console.info('component did mount');
-    console.log('>>>============Mounting Complete=================>>>');
-  }
-  componentWillReceiveProps(nextProps) {
-    this.setState({ isEven: nextProps.index % 2 === 0 });
-
-    console.info('>>> component will receive props <<<');
-    console.log({nextProps});
-  }
-  shouldComponentUpdate(nextProps, nextState) {
-    console.info('>>> should component update <<<');
-    console.log({ nextProps, nextState });
-    return true;
-  }
-  componentWillUpdate(nextProps, nextState) {
-    console.info('>>> component will update <<<');
-    console.log({ nextProps, nextState });
-  }
-  componentDidUpdate(prevProps, prevState) {
-    console.info('>>> component did update <<<');
-    console.log({ prevProps, prevState });
-    console.log('<<<============Updating Complete=================<<<')
-  }
-  componentWillUnmount(...rest) {
-    console.info('>>> component will unmount <<<');
-    console.log({ rest });
-  }
-
   handleClick = () => {
     const { buttonText } = this.props;
     if (buttonText === 'start game') {
@@ -83,8 +47,8 @@ class App extends Component {
         />
         <div>{instruction}</div>
         <Boards
-          player={this.props.board_1}
-          opponent={this.props.board_2}
+          player={this.props.player_board_1}
+          opponent={this.props.opponent_board_2}
         />
       </div>
     )
@@ -92,8 +56,8 @@ class App extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  board_1: state.board.board_1,
-  board_2: state.board.board_2,
+  player_board_1: state.board.player_board_1,
+  opponent_board_2: state.board.opponent_board_2,
   buttonText: state.board.buttonText,
   instruction: state.board.instruction,
 });
