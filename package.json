@@ -4,9 +4,11 @@
   "description": "Battleship Game with React",
   "main": "index.js",
   "scripts": {
+    "build": "webpack -p --config ./webpack.config.js --progress --colors",
     "start": "node server/index.js",
     "dev": "webpack-dev-server",
-    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress",
+    "heroku-postbuild": "npm run build",
+    "postinstall": "npm run build",
     "test": "jest --watch"
   },
   "repository": {
