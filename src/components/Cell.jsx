@@ -21,7 +21,7 @@ class Cell extends PureComponent {
   }
 
   componentWillUpdate(nextProps, nextState) {
-    const {
+    let {
       isPlayer,
       cell } = nextProps;
     this.renderPiece;
@@ -29,9 +29,11 @@ class Cell extends PureComponent {
       if (isPlayer && cell[0] === 1) {
         this.renderPiece = { background: 'grey' };
       } else if (!isPlayer && cell[0] === -1 && cell[1] === true) {
-        this.renderPiece = { background: 'grey' };
+        this.renderPiece = { background: 'green' };
+        cell = 'X';
       } else if (!isPlayer && cell[0] === 0 && cell[1] === true) {
         this.renderPiece = { background: 'red' };
+        cell = 'O';
       } else {
         this.renderPiece = {};
       }
@@ -76,7 +78,7 @@ Cell.propTypes = {
     PropTypes.string,
     PropTypes.number,
     PropTypes.array
-  ]),
+  ]).isRequired,
   clSuffix: PropTypes.string.isRequired,
   i: PropTypes.number.isRequired,
   k: PropTypes.number.isRequired,

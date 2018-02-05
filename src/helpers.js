@@ -1,6 +1,6 @@
 const createBoard = () => {
   return [
-    [null, '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+    ['', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
     ['A', [0, false], [0, false], [0, false], [0, false], [0, false], [0, false], [0, false], [0, false], [0, false], [0, false]],
     ['B', [0, false], [0, false], [0, false], [0, false], [0, false], [0, false], [0, false], [0, false], [0, false], [0, false]],
     ['C', [0, false], [0, false], [0, false], [0, false], [0, false], [0, false], [0, false], [0, false], [0, false], [0, false]],
@@ -16,7 +16,7 @@ const createBoard = () => {
 
 const createOpponentBoard = () => {
   return [
-    [null, '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+    ['', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
     ['A', [-1, false], [-1, false], [-1, false], [-1, false], [-1, false], [0, false], [0, false], [0, false], [0, false], [-1, false]],
     ['B', [0, false], [0, false], [0, false], [0, false], [0, false], [0, false], [0, false], [0, false], [0, false], [-1, false]],
     ['C', [0, false], [0, false], [0, false], [0, false], [0, false], [0, false], [0, false], [0, false], [0, false], [-1, false]],

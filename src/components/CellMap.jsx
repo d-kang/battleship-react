@@ -4,11 +4,11 @@ import Cell from './Cell';
 
 const CellMap = ({ row, i, isPlayer }) =>
   row.map((cell, k) => {
-    let clSuffix = (i === 0 && row[k] !== null)
+    let clSuffix = (i === 0 && row[k] !== '')
       ? 'num'
       : k === 0
-      ? 'letter'
-      : '';
+        ? 'letter'
+        : '';
     return (
       <Cell
         isPlayer={isPlayer}
