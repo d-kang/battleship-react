@@ -21,7 +21,7 @@ const initialState = {
   generateMove: generateOpponentMove(),
 };
 
-export default createReducer(initialState, {
+const boardReducer = createReducer(initialState, {
   [START_GAME]: (state) => ({
     ...state,
     game_mode: 'initialize',
@@ -71,3 +71,5 @@ export default createReducer(initialState, {
     };
   },
 });
+
+export default boardReducer;
