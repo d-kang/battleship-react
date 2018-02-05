@@ -23,11 +23,14 @@ const Cell = ({
   if (isPlayer && gameMode === 'initialize') {
     action = () => placePiece({ i, k });
   }
+  const renderPiece = isPlayer && cell === 1
+    ? { background: 'grey' }
+    : {};
   return (
     <div
       className={`grid-item ${clSuffix}`}
       onClick={action}
-      style={isPlayer && cell === 1 ? {background: 'grey'} : {}}
+      style={renderPiece}
     >
       {innerText}
     </div>
