@@ -9,8 +9,9 @@ const Cell = ({
   i,
   k,
   placePiece,
-  isPlayer,
   backgroundColor,
+  isPlayer,
+  gameMode,
 }) => {
   const innerText = clSuffix === 'num'
     ? k
@@ -19,7 +20,7 @@ const Cell = ({
     : '';
 
   let action;
-  if (isPlayer) {
+  if (isPlayer && gameMode === 'initialize') {
     action = () => placePiece({ i, k });
   }
   return (
@@ -46,7 +47,7 @@ Cell.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => ({
-
+  gameMode: state.board.game_mode,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

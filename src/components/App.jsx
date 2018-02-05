@@ -11,7 +11,7 @@ import {
   startGame,
   initialize,
   restart, } from '../actions/creators';
-console.log({ startGame})
+
 class App extends Component {
   logProps = console.log('props>>>', this.props);
   logState = console.log('state>>>', this.state);
