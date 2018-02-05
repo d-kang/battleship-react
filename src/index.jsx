@@ -10,7 +10,7 @@ const store = configureStore();
 const render = Component =>
   ReactDOM.render(
     <Provider store={store}>
-      <Component />
+      <Component index={0} />
     </Provider>,
     document.getElementById('root')
   )

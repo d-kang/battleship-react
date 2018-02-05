@@ -13,6 +13,10 @@ import {
   restart, } from '../actions/creators';
 
 class App extends Component {
+  state = {
+    gameID: 0,
+  }
+
   logProps = console.log('props>>>', this.props);
   logState = console.log('state>>>', this.state);
 
@@ -56,6 +60,7 @@ class App extends Component {
     } else if (buttonText === 'initialize pieces') {
       this.props.initialize();
     } else if (buttonText === 'restart') {
+      this.setState({ gameID: this.state.gameID + 1 });
       this.props.restart();
     }
   }
@@ -67,7 +72,10 @@ class App extends Component {
     } = this.props;
 
     return (
-      <div className='App'>
+      <div
+        className='App'
+        key={this.state.gameID}
+      >
         <Header />
         <Button
           onClick={this.handleClick}
