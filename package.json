@@ -11,6 +11,9 @@
     "postinstall": "npm run build",
     "test": "jest --watch"
   },
+  "engines": {
+    "node": "6.11.4"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/d-kang/battleship-react.git"
