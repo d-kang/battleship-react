@@ -1,57 +1,69 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { playerPlacePiece } from '../actions/creators';
-
-
-const Cell = ({
-  cell,
-  clSuffix,
-  i,
-  k,
-  backgroundColor,
-  isPlayer,
-  gameMode,
+import {
   playerPlacePiece,
-  guessOpponentPiece
-}) => {
-  const innerText = clSuffix === 'num'
-    ? k
-    : clSuffix === 'letter'
-    ? cell
-    : '';
+  guessOpponentPiece } from '../actions/creators';
 
-  let action;
-  if (isPlayer && gameMode === 'initialize') {
-    action = () => playerPlacePiece({ i, k });
-  } else if (!isPlayer && gameMode === 'game_on') {
-    action = () => guessOpponentPiece({ i, k });
+class Cell extends PureComponent {
+
+  componentWillMount() {
+    const { clSuffix, k, cell } = this.props;
+    this.innerText = clSuffix === 'num'
+      ? k
+      : clSuffix === 'letter'
+        ? cell
+        : '';
   }
 
-  let renderPiece;
-  if (Array.isArray(cell)) {
-    console.log({cell});
-    if (isPlayer && cell[0] === 1) {
-      renderPiece = { background: 'grey' };
-    } else if (!isPlayer && cell[0] === -1 && cell[1] === true) {
-      renderPiece = { background: 'grey' };
-    } else if (!isPlayer && cell[0] === 0 && cell[1] === true) {
-      renderPiece = { background: 'red' };
-    } else {
-      renderPiece = {};
+  componentWillUpdate(nextProps, nextState) {
+    const {
+      isPlayer,
+      cell } = nextProps;
+    this.renderPiece;
+    if (Array.isArray(cell)) {
+      if (isPlayer && cell[0] === 1) {
+        this.renderPiece = { background: 'grey' };
+      } else if (!isPlayer && cell[0] === -1 && cell[1] === true) {
+        this.renderPiece = { background: 'grey' };
+      } else if (!isPlayer && cell[0] === 0 && cell[1] === true) {
+        this.renderPiece = { background: 'red' };
+      } else {
+        this.renderPiece = {};
+      }
     }
   }
 
-  return (
-    <div
-      className={`grid-item ${clSuffix}`}
-      onClick={action}
-      style={renderPiece}
-    >
-      {innerText}
-    </div>
-  )
-};
+  moves = () => {
+    const {
+      cell,
+      clSuffix,
+      i,
+      k,
+      isPlayer,
+      gameMode,
+      playerPlacePiece,
+      guessOpponentPiece } = this.props;
+    if (isPlayer && gameMode === 'initialize') {
+      playerPlacePiece({ i, k });
+    } else if (!isPlayer && gameMode === 'game_on') {
+      guessOpponentPiece({ i, k });
+    }
+  }
+
+  render() {
+    return (
+      <div
+        className={`grid-item ${this.props.clSuffix}`}
+        onClick={this.moves}
+        style={this.renderPiece}
+      >
+        {this.innerText}
+      </div>
+    )
+  }
+}
+
 
 Cell.propTypes = {
   cell: PropTypes.oneOfType([
@@ -72,9 +84,8 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   playerPlacePiece: payload => dispatch(playerPlacePiece(payload)),
-  guessOpponentPiece: payload => dispatch(),
+  guessOpponentPiece: payload => dispatch(guessOpponentPiece(payload)),
 });
-
 
 export default connect(
   mapStateToProps,

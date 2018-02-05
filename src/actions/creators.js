@@ -20,7 +20,7 @@ const creators = {
   }),
   guessOpponentPiece: payload => ({
     type: 'GUESS_OPPONENT_PIECE',
-      payload
+    payload,
   }),
 
 
@@ -32,6 +32,7 @@ const {
   restart,
   playerPlacePiece,
   computerPlacePiece,
+  guessOpponentPiece,
 } = creators;
 
 export {
@@ -40,4 +41,5 @@ export {
   restart,
   playerPlacePiece,
   computerPlacePiece,
+  guessOpponentPiece,
 }

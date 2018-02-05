@@ -5,6 +5,7 @@ import {
   INITIALIZE_PIECES,
   RESTART_GAME,
   PLAYER_PLACE_PIECE,
+  GUESS_OPPONENT_PIECE,
 } from '../actions/constants';
 
 const initialState = {
@@ -43,8 +44,7 @@ export default createReducer(initialState, {
       board_1: player,
     }
   },
-  ['GUESS_OPPONENT_PIECE']: (state, { i, k }) => {
-    console.log('hiii')
+  [GUESS_OPPONENT_PIECE]: (state, { i, k }) => {
     const opponent = [...state.board_2];
     opponent[i][k] = [opponent[i][k][0], true];
     return {
