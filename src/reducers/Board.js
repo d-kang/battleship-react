@@ -4,7 +4,7 @@ import {
   START_GAME,
   INITIALIZE_PIECES,
   RESTART_GAME,
-  PLACE_PIECE,
+  PLAYER_PLACE_PIECE,
 } from '../actions/constants';
 
 const initialState = {
@@ -34,7 +34,7 @@ export default createReducer(initialState, {
     buttonText: 'start game',
     instruction: 'press start to start the game'
   }),
-  [PLACE_PIECE]: (state, { i, k }) => {
+  [PLAYER_PLACE_PIECE]: (state, { i, k }) => {
     const player = [...state.board_1];
     player[i][k] = [1, false];
     return {

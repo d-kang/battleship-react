@@ -2,29 +2,42 @@ import {
   START_GAME,
   INITIALIZE_PIECES,
   RESTART_GAME,
-  PLACE_PIECE,
+  PLAYER_PLACE_PIECE,
+  COMPUTER_PLACE_PIECE,
 } from './constants';
 
 const creators = {
   startGame: () => ({ type: START_GAME }),
   initialize: () => ({ type: INITIALIZE_PIECES }),
   restart: () => ({ type: RESTART_GAME }),
-  placePiece: (payload) => ({
-    type: PLACE_PIECE,
-    payload
+  playerPlacePiece: payload => ({
+    type: PLAYER_PLACE_PIECE,
+    payload,
   }),
+  computerPlacePiece: payload => ({
+    type: COMPUTER_PLACE_PIECE,
+    payload,
+  }),
+  guessOpponentPiece: payload => ({
+    type: 'GUESS_OPPONENT_PIECE',
+      payload
+  }),
+
+
 };
 
 const {
   startGame,
   initialize,
   restart,
-  placePiece,
+  playerPlacePiece,
+  computerPlacePiece,
 } = creators;
 
 export {
   startGame,
   initialize,
   restart,
-  placePiece,
+  playerPlacePiece,
+  computerPlacePiece,
 }
