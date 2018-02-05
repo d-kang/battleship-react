@@ -8,10 +8,11 @@ const Cell = ({
   clSuffix,
   i,
   k,
-  placePiece,
   backgroundColor,
   isPlayer,
   gameMode,
+  placePiece,
+  guessOpponentPiece
 }) => {
   const innerText = clSuffix === 'num'
     ? k
@@ -22,10 +23,29 @@ const Cell = ({
   let action;
   if (isPlayer && gameMode === 'initialize') {
     action = () => placePiece({ i, k });
+  } else if (!isPlayer && gameMode === 'game_on') {
+    action = () => guessOpponentPiece({ i, k });
   }
-  const renderPiece = isPlayer && cell === 1
-    ? { background: 'grey' }
-    : {};
+
+  let renderPiece;
+  if (Array.isArray(cell)) {
+    console.log({cell});
+    if (isPlayer && cell[0] === 1) {
+      renderPiece = { background: 'grey' };
+    } else if (!isPlayer && cell[0] === -1 && cell[1] === true) {
+      renderPiece = { background: 'grey' };
+    } else if (!isPlayer && cell[0] === 0 && cell[1] === true) {
+      renderPiece = { background: 'red' };
+    } else {
+      renderPiece = {};
+    }
+    // renderPiece = isPlayer && cell[0] === 1
+    //   ? { background: 'grey' }
+    //   : !isPlayer && gameMode === 'game_on' && cell[0] === 1 && cell[1] === true
+    //     ? { background: 'red' }
+    //     : {}
+  }
+
   return (
     <div
       className={`grid-item ${clSuffix}`}
@@ -40,7 +60,8 @@ const Cell = ({
 Cell.propTypes = {
   cell: PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.number
+    PropTypes.number,
+    PropTypes.array
   ]),
   clSuffix: PropTypes.string.isRequired,
   i: PropTypes.number.isRequired,
@@ -55,6 +76,10 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   placePiece: (payload) => dispatch(placePiece(payload)),
+  guessOpponentPiece: (payload) => dispatch({
+    type: 'GUESS_OPPONENT_PIECE',
+    payload,
+  }),
 });
 
 

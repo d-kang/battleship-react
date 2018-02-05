@@ -1,4 +1,4 @@
-import { createBoard } from '../helpers';
+import { createBoard, createOpponentBoard } from '../helpers';
 import { createReducer } from '../utils';
 import {
   START_GAME,
@@ -9,7 +9,7 @@ import {
 
 const initialState = {
   board_1: createBoard(),
-  board_2: createBoard(),
+  board_2: createOpponentBoard(),
   game_mode: 'start',
   buttonText: 'start game',
   instruction: 'press start to start the game',
@@ -24,7 +24,7 @@ export default createReducer(initialState, {
   }),
   [INITIALIZE_PIECES]: (state, payload) => ({
     ...state,
-    game_mode: 'restart',
+    game_mode: 'game_on',
     buttonText: 'restart',
     instruction: 'game has started, have fun',
   }),
@@ -36,11 +36,21 @@ export default createReducer(initialState, {
   }),
   [PLACE_PIECE]: (state, { i, k }) => {
     const player = [...state.board_1];
-    player[i][k] = 1;
+    player[i][k] = [1, false];
     return {
       ...state,
       game_mode: state.game_mode,
       board_1: player,
+    }
+  },
+  ['GUESS_OPPONENT_PIECE']: (state, { i, k }) => {
+    console.log('hiii')
+    const opponent = [...state.board_2];
+    opponent[i][k] = [opponent[i][k][0], true];
+    return {
+      ...state,
+      game_mode: state.game_mode,
+      board_2: opponent,
     }
   }
 })
