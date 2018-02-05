@@ -55,8 +55,7 @@ class Cell extends PureComponent {
       gameMode,
       playerInitializeBoard,
       playerMove,
-      makeOpponentMoveWithTimeout,
-      opponentMove } = this.props;
+      makeOpponentMoveWithTimeout } = this.props;
     if (isPlayer && gameMode === 'initialize') {
       playerInitializeBoard({ i, k });
     } else if (!isPlayer && gameMode === 'game_on') {
