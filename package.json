@@ -4,7 +4,7 @@
   "description": "Battleship Game with React",
   "main": "index.js",
   "scripts": {
-    "build": "webpack -p --display-error-details",
+    "build": "webpack -p --display-error-details --colors",
     "start": "node server/index.js",
     "dev": "webpack-dev-server",
     "heroku-postbuild": "npm run build",
