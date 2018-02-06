@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import '../assets/app.css';
+import '../assets/app.scss';
 import Header from './Header';
 import Boards from './Boards';
 import Button from './Button';
