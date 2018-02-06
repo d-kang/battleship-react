@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import './App.css';
+import '../assets/app.css';
 import Header from './Header';
 import Boards from './Boards';
 import Button from './Button';
@@ -10,7 +10,7 @@ import {
   initialize,
   restart } from '../actions/creators';
 
-class App extends Component {
+export class App extends Component {
   state = {
     gameID: 0,
   }
