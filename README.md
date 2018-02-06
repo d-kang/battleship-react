@@ -1,5 +1,5 @@
 # battleship-react
-Recreatiion of the game Battleship with React and Redux
+Recreation of the game Battleship with React and Redux
 
 ### Deployed Link
 https://battleship-reactredux.herokuapp.com/
@@ -28,4 +28,4 @@ npm run test:watch
 npm run build
 npm start
 ```
-You can now visit http://localhost:9090
+The app will be listening on http://localhost:9090
