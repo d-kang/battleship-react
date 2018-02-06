@@ -2,6 +2,7 @@ $lightblack: lighten(#252527, 9);
 $opBoardSize : 35px;
 $plBoardSize : 25px;
 $margin: 400px;
+
 .header {
   color: #fff;
   background-color: $lightblack;
@@ -24,8 +25,11 @@ $margin: 400px;
   display: grid;
   border-top: 1px;
   border-right: 1px;
-  border-style: solid;
+  border-bottom: 0px;
+  border-left: 0px;
   border-color: $lightblack;
+  border-style: solid;
+  border-width: thin;
   line-height: 1.4em;
   &.player {
     font-size: small;
@@ -52,9 +56,9 @@ $margin: 400px;
 .grid-item {
   text-align: center;
   border-style: solid;
-  border-width: 0.1px;
   background: aliceblue;
   border-right: 0px;
   border-top: 0px;
   border-color: $lightblack;
+  border-width: thin;
 }
