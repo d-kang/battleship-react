@@ -7,20 +7,23 @@ import { createBoard } from '../../helpers';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-const props = {
-  player: createBoard(),
-  opponent: createBoard()
-};
+
 
 describe('Boards', () => {
+  const minProps = {
+    player: createBoard(),
+    opponent: createBoard()
+  };
   let wrapper;
 
   beforeEach(() => {
     wrapper = shallow(
-      <Boards
-        {...props}
-      />
+      <Boards {...minProps} />
     );
+  });
+
+  it('renders Boards without exploding', () => {
+    expect(wrapper.length).toBe(1);
   });
 
   it('renders two <BoardMap /> components', () => {

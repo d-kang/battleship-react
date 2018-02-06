@@ -8,13 +8,21 @@ Enzyme.configure({ adapter: new Adapter() });
 describe('Button', () => {
   let wrapper;
 
+  const minProps = {
+    buttonText: 'Hello World',
+    onClick: () => {},
+  };
+
   beforeEach(() => {
     wrapper = shallow(
       <Button
-        buttonText={'Hello World'}
-        onClick={()=>{}}
+        {...minProps}
       />
     );
+  });
+
+  it('renders Button without exploding', () => {
+    expect(wrapper.length).toBe(1);
   });
 
   it('should have a `button` element', () => {
