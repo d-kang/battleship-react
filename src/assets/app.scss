@@ -25,10 +25,10 @@ $margin: 400px;
   display: grid;
   border-top: 1px;
   border-right: 1px;
+  border-style: solid;
   border-bottom: 0px;
   border-left: 0px;
   border-color: $lightblack;
-  border-style: solid;
   border-width: thin;
   line-height: 1.4em;
   &.player {
