@@ -1,5 +1,7 @@
 $lightblack: lighten(#252527, 9);
-
+$opBoardSize : 35px;
+$plBoardSize : 25px;
+$margin: 400px;
 .header {
   color: #fff;
   background-color: $lightblack;
@@ -20,17 +22,17 @@ $lightblack: lighten(#252527, 9);
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(11, 25px);
   border-top: 1px;
   border-right: 1px;
   border-style: solid;
   border-color: $lightblack;
   &.player {
     font-size: small;
-    margin-right: 360px;
+    margin-right: $margin;
     padding: 0.01em;
     line-height: 1.4em;
-    grid-auto-rows: minmax(25px, 25px);
+    grid-template-columns: repeat(11, $plBoardSize);
+    grid-auto-rows: minmax($plBoardSize, $plBoardSize);
     .grid-item.letter,
     .grid-item.num {
       text-align: center;
@@ -39,14 +41,14 @@ $lightblack: lighten(#252527, 9);
       border-right: 0px;
       border-top: 0px;
     }
-
   }
   &.opponent {
-    font-size: 30px;
-    margin-left: 360px;
+    font-size: 25px;
+    margin-left: $margin;
     line-height: 1.4em;
-    grid-template-columns: repeat(11, 40px);
-    grid-auto-rows: minmax(40px, 40px);
+    padding: 0.01em;
+    grid-template-columns: repeat(11, $opBoardSize);
+    grid-auto-rows: minmax($opBoardSize, $opBoardSize);
     .grid-item.letter,
     .grid-item.num {
       text-align: center;
@@ -64,4 +66,5 @@ $lightblack: lighten(#252527, 9);
   background: aliceblue;
   border-right: 0px;
   border-top: 0px;
+  border-color: $lightblack;
 }
