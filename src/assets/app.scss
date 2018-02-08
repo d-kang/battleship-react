@@ -2,16 +2,34 @@ $lightblack: lighten(#252527, 9);
 $opBoardSize : 35px;
 $plBoardSize : 25px;
 $margin: 400px;
+$gold : #ecd018;
 
-.header {
-  color: #fff;
-  background-color: $lightblack;
-  width: 100%;
-  height: 50px;
-  text-align: center;
-  line-height: 2.5rem;
-  margin-bottom: .5rem;
-  font-size: 2.5rem;
+body {
+  font: 15px/1.5 Arial, Helvetica,sans-serif;
+  padding:0;
+  margin:0;
+  background-color:#f4f4f4;
+}
+
+.container{
+  width:80%;
+  margin:auto;
+  overflow:hidden;
+}
+
+header {
+  background: #35424a;
+  color: #ffffff;
+  padding-top: 30px;
+  min-height: 70px;
+  border-bottom: $gold 3px solid;
+  margin: 0;
+  #branding {
+    text-align: center;
+    h1 {
+      margin: 0;
+    }
+  }
 }
 
 .flex-container {
@@ -25,7 +43,7 @@ $margin: 400px;
   display: grid;
   border-top: 1px;
   border-right: 1px;
-  border-style: solid;
+  border-style: ridge;
   border-bottom: 0px;
   border-left: 0px;
   border-color: $lightblack;
@@ -38,7 +56,7 @@ $margin: 400px;
     grid-auto-rows: minmax($plBoardSize, $plBoardSize);
     .grid-item.letter,
     .grid-item.num {
-      background: #ecd018;
+      background: $gold;
     }
   }
   &.opponent {
@@ -48,7 +66,7 @@ $margin: 400px;
     grid-auto-rows: minmax($opBoardSize, $opBoardSize);
     .grid-item.letter,
     .grid-item.num {
-      background: #ecd018;
+      background: $gold;
     }
   }
 }
