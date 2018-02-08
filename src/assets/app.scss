@@ -55,19 +55,57 @@ body {
 }
 
 .container {
+  margin: auto;
+  width: 50%;
+  grid-gap: 30px;
   text-align: center;
   display: grid;
   grid-template-columns: auto auto;
   grid-template-areas:
   "pl op"
-  "in in"
-  "in in"
+  "gui in"
+}
+
+// Ship sizes
+.game_ui {
+  display: grid;
+  grid-area: gui;
+  padding: 10px;
+  width: 50%;
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    thead {
+      background-color: darken(#dddddd, 10%);
+    }
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+  }
+}
+
+#instructions {
+  grid-area: in;
+  background: aliceblue;
+  border: 10px solid $borderColor;
+  overflow: hidden;
+  width: 500px;
+  // margin: 5% 20%;
+}
+
+#board-name {
+  font-size: 25px;
 }
 
 .board-container {
   display: grid;
-  margin: auto;
-  width: 50%;
+
   padding: 10px;
   &.player {
     grid-area: pl;
@@ -94,17 +132,6 @@ body {
 .board-item {
   background: aliceblue;
   border: 1px solid $borderColor;
-}
-
-#instructions {
-  grid-area: in;
-  background: aliceblue;
-  border: 10px solid $borderColor;
-  margin: 5% 20%;
-}
-
-#board-name {
-  font-size: 25px;
 }
 
 
