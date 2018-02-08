@@ -16,7 +16,7 @@ const initialState = {
   player_board_1: createBoard(),
   opponent_board_2: createOpponentBoard(),
   game_mode: 'start',
-  buttonText: 'start game',
+  buttonText: 'Start',
   instruction: 'press start to start the game',
   generateMove: generateOpponentMove(),
 };
@@ -25,7 +25,7 @@ export default createReducer(initialState, {
   [START_GAME]: (state) => ({
     ...state,
     game_mode: 'initialize',
-    buttonText: 'initialize pieces',
+    buttonText: 'Ready',
     instruction:
     `Place your battleship pieces on PLAYER BOARD.
     Then press the button`,
@@ -33,7 +33,7 @@ export default createReducer(initialState, {
   [INITIALIZE_PIECES]: (state) => ({
     ...state,
     game_mode: 'game_on',
-    buttonText: 'restart',
+    buttonText: 'Forfeit',
     instruction:
     `The game has started!
     Guess where your opponents pieces are
@@ -42,7 +42,7 @@ export default createReducer(initialState, {
   [RESTART_GAME]: (state) => ({
     ...state,
     game_mode: 'start',
-    buttonText: 'start game',
+    buttonText: 'Start',
     instruction: 'Press start to start the game',
     player_board_1: createBoard(),
     opponent_board_2: createOpponentBoard(),
