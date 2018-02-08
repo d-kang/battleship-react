@@ -4,11 +4,11 @@ import { connect } from 'react-redux';
 import '../assets/app.scss';
 import Header from './Header';
 import Boards from './Boards';
-import Button from './Button';
 import {
   startGame,
   initialize,
   restart } from '../actions/creators';
+import GameInstruction from './GameInstruction';
 
 export class App extends Component {
   state = {
@@ -38,16 +38,16 @@ export class App extends Component {
         className='App'
         key={this.state.gameID}
       >
-        <Header />
-        <div
-          style={{textAlign: 'center'}}
-        >
-          <div>{instruction}</div>
-          <Button
-            onClick={this.handleClick}
-            buttonText={buttonText}
-          />
-        </div>
+        <Header
+          instruction={instruction}
+          handleClick={this.handleClick}
+          buttonText={buttonText}
+        />
+        <GameInstruction
+          instruction={instruction}
+          handleClick={this.handleClick}
+          buttonText={buttonText}
+        />
         <Boards
           player={this.props.player_board_1}
           opponent={this.props.opponent_board_2}
