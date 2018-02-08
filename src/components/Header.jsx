@@ -3,7 +3,7 @@ import GameInstruction from './GameInstruction';
 
 const Header = ({ message }) =>
   <header>
-    <div className="container">
+    <div className="header-container">
       <div id="branding">
         <h1>
           {message}

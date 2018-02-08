@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import BoardMap from './BoardMap';
 
 const Boards = ({ player, opponent }) =>
-  <div className="flex-container">
+  <div className="container">
     <BoardMap
       board={player}
       isPlayer={true}
-      className="grid-container player"
+      className="board-container player"
     />
     <BoardMap
       isPlayer={false}
-      className="grid-container opponent"
+      className="board-container opponent"
       board={opponent}
       style={{borderTop: '1px'}}
     />

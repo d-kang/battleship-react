@@ -1,17 +1,23 @@
-$lightblack: lighten(#252527, 9);
+// $lightblack: lighten(#252527, 9);
+$lightblack: #272727;
 $opBoardSize : 35px;
 $plBoardSize : 25px;
 $margin: 400px;
-$gold : #ecd018;
+$gold: #ffc600;
+$borderColor: rgba(0, 0, 0, 0.09);
 
 body {
-  font: 15px/1.5 Arial, Helvetica,sans-serif;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 900;
+  font-size: 10px;
   padding:0;
   margin:0;
   background-color:#f4f4f4;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.07);
 }
 
-.container{
+.header-container{
   width:80%;
   margin:auto;
   overflow:hidden;
@@ -28,34 +34,37 @@ header {
     text-align: center;
     h1 {
       margin: 0;
+      font-size: x-large;
     }
   }
 }
 
-.flex-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.container {
+  display: grid;
+  grid-template-columns: 100px 100px;
+  grid-template-areas:
+  "b1 b1"
+  "b2 b2"
 }
 
-.grid-container {
+.board-container.player {
+  grid-area: b1;
+}
+
+.board-container.opponent {
+  grid-area: b2;
+}
+
+
+.board-container {
   display: grid;
-  border-top: 1px;
-  border-right: 1px;
-  border-style: ridge;
-  border-bottom: 0px;
-  border-left: 0px;
-  border-color: $lightblack;
-  border-width: thin;
-  line-height: 1.4em;
   &.player {
     font-size: small;
     margin-right: $margin;
     grid-template-columns: repeat(11, $plBoardSize);
     grid-auto-rows: minmax($plBoardSize, $plBoardSize);
-    .grid-item.letter,
-    .grid-item.num {
+    .board-item.letter,
+    .board-item.num {
       background: $gold;
     }
   }
@@ -64,19 +73,19 @@ header {
     margin-left: $margin;
     grid-template-columns: repeat(11, $opBoardSize);
     grid-auto-rows: minmax($opBoardSize, $opBoardSize);
-    .grid-item.letter,
-    .grid-item.num {
+    .board-item.letter,
+    .board-item.num {
       background: $gold;
     }
   }
 }
 
-.grid-item {
+.board-item {
   text-align: center;
-  border-style: solid;
   background: aliceblue;
-  border-right: 0px;
-  border-top: 0px;
-  border-color: $lightblack;
-  border-width: thin;
+  border: 1px solid $borderColor;
+
 }
+
+
+

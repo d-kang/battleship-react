@@ -67,7 +67,7 @@ class Cell extends PureComponent {
   render() {
     return (
       <div
-        className={`grid-item ${this.props.clSuffix}`}
+        className={`board-item ${this.props.clSuffix}`}
         onClick={this.moves}
         style={this.renderPiece}
       >
