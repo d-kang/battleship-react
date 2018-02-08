@@ -16,11 +16,11 @@ export class App extends Component {
 
   handleClick = () => {
     const { buttonText } = this.props;
-    if (buttonText === 'start game') {
+    if (buttonText === 'Start') {
       this.props.startGame();
-    } else if (buttonText === 'initialize pieces') {
+    } else if (buttonText === 'Ready') {
       this.props.initialize();
-    } else if (buttonText === 'restart') {
+    } else if (buttonText === 'Forfeit') {
       this.setState({ gameID: this.state.gameID + 1 });
       this.props.restart();
     }
