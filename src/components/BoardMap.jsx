@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 const BoardMap = ({ board, className, isPlayer }) =>
   <div>
-    {isPlayer && 'Player Board'}
     <div className={className}>
       {
         board.map((row, i) => {
@@ -17,11 +16,7 @@ const BoardMap = ({ board, className, isPlayer }) =>
         })
       }
     </div>
-    <div
-      style={{textAlign: 'end'}}
-    >
-      {!isPlayer && 'Opponent Board'}
-    </div>
+    <span id={'board-name'}>{isPlayer ? 'Player Board' : 'Opponent Board'}</span>
   </div>;
 
 BoardMap.propTypes = {
