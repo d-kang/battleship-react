@@ -42,7 +42,6 @@ body {
 
 .header_2 {
   background: $borderColor;
-  // background: darken(aliceblue, 10%);
   padding-top: 15px;
   min-height: 35px;
   margin: 0;
@@ -55,9 +54,8 @@ body {
   }
 }
 
-
-
 .container {
+  text-align: center;
   display: grid;
   grid-template-columns: auto auto;
   grid-template-areas:
@@ -68,6 +66,9 @@ body {
 
 .board-container {
   display: grid;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
   &.player {
     grid-area: pl;
     font-size: small;
@@ -91,17 +92,15 @@ body {
 }
 
 .board-item {
-  text-align: center;
   background: aliceblue;
   border: 1px solid $borderColor;
 }
 
 #instructions {
   grid-area: in;
-  text-align: center;
   background: aliceblue;
   border: 10px solid $borderColor;
-  margin-top: 30px
+  margin: 5% 20%;
 }
 
 #board-name {
