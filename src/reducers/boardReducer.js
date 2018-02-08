@@ -26,13 +26,18 @@ export default createReducer(initialState, {
     ...state,
     game_mode: 'initialize',
     buttonText: 'initialize pieces',
-    instruction: 'Please place your pieces then press the button',
+    instruction:
+    `Place your battleship pieces on PLAYER BOARD.
+    Then press the button`,
   }),
   [INITIALIZE_PIECES]: (state) => ({
     ...state,
     game_mode: 'game_on',
     buttonText: 'restart',
-    instruction: 'Game has started, have fun',
+    instruction:
+    `The game has started!
+    Guess where your opponents pieces are
+    on OPPONENT BOARD`,
   }),
   [RESTART_GAME]: (state) => ({
     ...state,
