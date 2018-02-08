@@ -2,7 +2,7 @@ import React from 'react';
 import GameInstruction from './GameInstruction';
 
 const Header = ({ message }) =>
-  <header>
+  <header className="header">
     <div className="header-container">
       <div id="branding">
         <h1>
