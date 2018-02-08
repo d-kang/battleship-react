@@ -17,13 +17,14 @@ body {
   text-shadow: 0 2px 0 rgba(0, 0, 0, 0.07);
 }
 
+
 .header-container{
   width:80%;
   margin:auto;
   overflow:hidden;
 }
 
-header {
+.header {
   background: #35424a;
   color: #ffffff;
   padding-top: 30px;
@@ -39,28 +40,37 @@ header {
   }
 }
 
+.header_2 {
+  background: $borderColor;
+  // background: darken(aliceblue, 10%);
+  padding-top: 15px;
+  min-height: 35px;
+  margin: 0;
+  #branding {
+    text-align: center;
+    h1 {
+      margin: 0;
+      font-size: x-large;
+    }
+  }
+}
+
+
+
 .container {
   display: grid;
-  grid-template-columns: 100px 100px;
+  grid-template-columns: auto auto;
   grid-template-areas:
-  "b1 b1"
-  "b2 b2"
+  "pl op"
+  "in in"
+  "in in"
 }
-
-.board-container.player {
-  grid-area: b1;
-}
-
-.board-container.opponent {
-  grid-area: b2;
-}
-
 
 .board-container {
   display: grid;
   &.player {
+    grid-area: pl;
     font-size: small;
-    margin-right: $margin;
     grid-template-columns: repeat(11, $plBoardSize);
     grid-auto-rows: minmax($plBoardSize, $plBoardSize);
     .board-item.letter,
@@ -69,8 +79,8 @@ header {
     }
   }
   &.opponent {
+    grid-area: op;
     font-size: 25px;
-    margin-left: $margin;
     grid-template-columns: repeat(11, $opBoardSize);
     grid-auto-rows: minmax($opBoardSize, $opBoardSize);
     .board-item.letter,
@@ -84,7 +94,18 @@ header {
   text-align: center;
   background: aliceblue;
   border: 1px solid $borderColor;
+}
 
+#instructions {
+  grid-area: in;
+  text-align: center;
+  background: aliceblue;
+  border: 10px solid $borderColor;
+  margin-top: 30px
+}
+
+#board-name {
+  font-size: 25px;
 }
 
 
