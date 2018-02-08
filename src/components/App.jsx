@@ -8,7 +8,6 @@ import {
   startGame,
   initialize,
   restart } from '../actions/creators';
-import GameInstruction from './GameInstruction';
 
 export class App extends Component {
   state = {
@@ -31,26 +30,23 @@ export class App extends Component {
     const {
       buttonText,
       instruction,
-    } = this.props;
-
+      player_board_1,
+      opponent_board_2,
+      game_mode } = this.props;
     return (
-      <div
-        className='App'
-        key={this.state.gameID}
-      >
+      <div className='App' key={this.state.gameID}>
         <Header
           instruction={instruction}
           handleClick={this.handleClick}
           buttonText={buttonText}
         />
-        <GameInstruction
+        <Boards
+          player={player_board_1}
+          opponent={opponent_board_2}
+          mode={game_mode}
           instruction={instruction}
           handleClick={this.handleClick}
           buttonText={buttonText}
-        />
-        <Boards
-          player={this.props.player_board_1}
-          opponent={this.props.opponent_board_2}
         />
       </div>
     );
@@ -62,6 +58,7 @@ const mapStateToProps = (state) => ({
   opponent_board_2: state.board.opponent_board_2,
   buttonText: state.board.buttonText,
   instruction: state.board.instruction,
+  game_mode: state.board.game_mode,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -75,6 +72,7 @@ App.propTypes = {
   opponent_board_2: PropTypes.array.isRequired,
   buttonText: PropTypes.string.isRequired,
   instruction: PropTypes.string.isRequired,
+  game_mode: PropTypes.string.isRequired,
 };
 
 export default connect(
