@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import Button from './Button';
 
 const GameInstruction = ({ instruction, handleClick, buttonText, mode }) =>
-<section id='instructions'>
-  <header className="header_2">Instructions to play against Computer</header>
-  <Button
-  onClick={handleClick}
-  buttonText={buttonText}
-  />
+  <section id='instructions'>
+    <header className="header_2">Instructions to play against Computer</header>
+    <Button
+      onClick={handleClick}
+      buttonText={buttonText}
+    />
     <br/>
     <br/>
     <br/>
